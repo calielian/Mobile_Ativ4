@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.calielian.task.R
 import com.calielian.task.databinding.FragmentLoginBinding
-import com.calielian.task.databinding.FragmentSplashBinding
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -22,12 +21,22 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initListener()
+    }
+
     private fun initListener() {
+        binding.buttonLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
+
         binding.btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
-        binding.btnRegister.setOnClickListener {
+        binding.btnRecover.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
         }
     }
