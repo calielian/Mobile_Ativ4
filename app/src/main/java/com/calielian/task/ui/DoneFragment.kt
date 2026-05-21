@@ -18,4 +18,9 @@ class DoneFragment : Fragment() {
         _biding = FragmentDoneBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _biding = null
+    }
 }
